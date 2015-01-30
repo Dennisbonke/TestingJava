@@ -10,24 +10,47 @@ public class DateTest {
 
     public static void main (String[] args) {
 
-
-
+        //Intro to the program
+        System.out.println("Welcome! " + "I will check the Day, Lessons and Teachers for you!");
+        System.out.println("");
+        //Checks the Day
+        checkDay();
+        System.out.println("");
+        //TODO: Add checkDayForLessons when done
+        //Checks the Teachers
         checkDayForTeachers();
+        System.out.println("");
+        System.out.println("Copyright: Dennis Bonke --2015");
 
     }
 
-    public static void checkDayForLessons(){
+    public static void checkDay(){
+        String dayNames[] = new DateFormatSymbols().getWeekdays();
+        Calendar date = Calendar.getInstance();
+        day = dayNames[date.get(Calendar.DAY_OF_WEEK)];
 
+        System.out.println("Day: " + dayNames[date.get(Calendar.DAY_OF_WEEK)]);
+        if (day == dayNames[Calendar.SUNDAY]){
+            System.out.println("Weekend!");
+        }
+        else if (day == dayNames[Calendar.FRIDAY]){
+            System.out.println("Weekend has started!");
+        }
+    }
+
+    public static void checkDayForLessons(){
+        //TODO Finish this thing up
+        String dayNames[] = new DateFormatSymbols().getWeekdays();
+        Calendar date = Calendar.getInstance();
+        day = dayNames[date.get(Calendar.DAY_OF_WEEK)];
     }
 
     public static void checkDayForTeachers(){
         String dayNames[] = new DateFormatSymbols().getWeekdays();
         Calendar date = Calendar.getInstance();
-        System.out.println("Day: " + dayNames[date.get(Calendar.DAY_OF_WEEK)]);
 
         day = dayNames[date.get(Calendar.DAY_OF_WEEK)];
 
-        System.out.println(day);
         if (day == dayNames[Calendar.SUNDAY]){
             System.out.println("No Sabbar :)!");
             System.out.println("Weekend :)!");
