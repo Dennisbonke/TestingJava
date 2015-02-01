@@ -11,8 +11,10 @@ public class DateTest {
     public static String day;
     private static Scanner input = new Scanner(System.in);
     private static Scanner GUIinput = new Scanner(System.in);
-    private static String CMDanswer;
     private static String GUIchoice;
+    private static String GUIMessageWelcome = "Welcome!" +" " + "I will check the Day, Lessons and Teachers for you!";
+    private static String GUIMessageChoice = "Please enter your choice, day for the day and info about it, lessons for the lessons and teachers for the teachers: ";
+    private static String CMDanswer;
 
     public static void main (String[] args) {
 
@@ -21,23 +23,26 @@ public class DateTest {
         System.out.println("Type yes for a GUI, no for the commandline");
         GUIchoice = input.nextLine();
         if (GUIchoice.equalsIgnoreCase("yes")) {
-            String GUIWelcome = "Welcome!" + "I will check the Day, Lessons and Teachers for you!";
-            JOptionPane.showMessageDialog(null, GUIWelcome, "Welcome!", JOptionPane.OK_OPTION);
+            //Intro GUI Program
+            JOptionPane.showMessageDialog(null, GUIMessageWelcome, "Welcome!", JOptionPane.INFORMATION_MESSAGE);
+            //Make Choice
+            JOptionPane.showInputDialog(null, GUIMessageChoice, "Question", JOptionPane.QUESTION_MESSAGE);
             System.exit(0);
         }
         else if (GUIchoice.equalsIgnoreCase("no")) {
+            //Intro CMD Program
             System.out.println("Welcome! " + "I will check the Day, Lessons and Teachers for you!");
-            System.out.println("Do you want to know the day and info about it, the lessons for today or the teachers of today?");
+            //System.out.println("Do you want to know the day and info about it, the lessons for today or the teachers of today?");
             //Make Choice
             System.out.print("Please enter your choice, day for the day and info about it, lessons for the lessons and teachers for the teachers: ");
             CMDanswer = input.nextLine();
             //Execute choice
             if (CMDanswer.equals("day")) {
-                checkDay();
+                checkDayCMD();
             } else if (CMDanswer.equals("teachers")) {
-                checkDayForTeachers();
+                checkDayForTeachersCMD();
             } else if (CMDanswer.equals("lessons")) {
-                checkDayForLessons();
+                checkDayForLessonsCMD();
             } else {
                 System.out.println(CMDanswer + " is not a valid answer");
             }
@@ -52,12 +57,12 @@ public class DateTest {
             System.out.println("Copyright: Dennis Bonke --2015");
         }
         else {
-            System.out.println(GUIchoice + " is not vaild");
+            System.out.println(GUIchoice + " is not a valid choice!");
             System.out.println("Copyright: Dennis Bonke --2015");
         }
     }
 
-    public static void checkDay(){
+    public static void checkDayCMD(){
         String dayNames[] = new DateFormatSymbols().getWeekdays();
         Calendar date = Calendar.getInstance();
         day = dayNames[date.get(Calendar.DAY_OF_WEEK)];
@@ -92,9 +97,12 @@ public class DateTest {
             System.out.println("");
             System.out.println("Weekend!");
         }
+        else {
+            System.out.println("No message for this day (yet)!" + " " + "Either you are using an outdated version, or you are testing, or the universe is messed up and we all gonna die");
+        }
     }
 
-    public static void checkDayForLessons(){
+    public static void checkDayForLessonsCMD(){
         //TODO Finish this thing up
         String dayNames[] = new DateFormatSymbols().getWeekdays();
         Calendar date = Calendar.getInstance();
@@ -104,9 +112,12 @@ public class DateTest {
             System.out.println("");
             System.out.println("None!");
         }
+        else {
+            System.out.println("No message for this day (yet)!" + " " + "Either you are using an outdated version, or you are testing, or the universe is messed up and we all gonna die");
+        }
     }
 
-    public static void checkDayForTeachers(){
+    public static void checkDayForTeachersCMD(){
         String dayNames[] = new DateFormatSymbols().getWeekdays();
         Calendar date = Calendar.getInstance();
 
@@ -140,6 +151,9 @@ public class DateTest {
         else if (day == dayNames[Calendar.SATURDAY]){
             System.out.println("");
             System.out.println("No Sabbar :)!");
+        }
+        else {
+            System.out.println("No message for this day (yet)!" + " " + "Either you are using an outdated version, or you are testing, or the universe is messed up and we all gonna die");
         }
     }
 
